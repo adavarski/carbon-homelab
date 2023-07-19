@@ -1,4 +1,4 @@
-# KinD+ArgoCD: multicluster playground
+## KinD+ArgoCD: multicluster playground
 
 > **Table of Contents**
 > * [Introduction](#introduction)
