@@ -61,9 +61,34 @@ List of values to pass into `kubectl port-forward`:
 | grafana | monitoring | `3000:80`    |
 | prometheus | monitoring | `9090:9090` |
 
-Example: 
+Example (Grafana): 
 ```
 $ kubectl config use-context kind-delivery
+$ kubectl get svc --all-namespaces
+NAMESPACE     NAME                                                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                        AGE
+default       kubernetes                                           ClusterIP   10.96.0.1       <none>        443/TCP                        30m
+element       element-elementweb                                   ClusterIP   10.96.82.61     <none>        80/TCP                         27m
+excalidraw    excalidraw                                           ClusterIP   10.96.244.152   <none>        80/TCP                         27m
+kube-system   kube-dns                                             ClusterIP   10.96.0.10      <none>        53/UDP,53/TCP,9153/TCP         30m
+kube-system   monitoring-kube-prometheus-coredns                   ClusterIP   None            <none>        9153/TCP                       27m
+kube-system   monitoring-kube-prometheus-kube-controller-manager   ClusterIP   None            <none>        10257/TCP                      27m
+kube-system   monitoring-kube-prometheus-kube-etcd                 ClusterIP   None            <none>        2381/TCP                       27m
+kube-system   monitoring-kube-prometheus-kube-proxy                ClusterIP   None            <none>        10249/TCP                      27m
+kube-system   monitoring-kube-prometheus-kube-scheduler            ClusterIP   None            <none>        10259/TCP                      27m
+kube-system   monitoring-kube-prometheus-kubelet                   ClusterIP   None            <none>        10250/TCP,10255/TCP,4194/TCP   26m
+loki          loki                                                 ClusterIP   10.96.67.193    <none>        3100/TCP                       25m
+loki          loki-headless                                        ClusterIP   None            <none>        3100/TCP                       25m
+loki          loki-memberlist                                      ClusterIP   None            <none>        7946/TCP                       25m
+monitoring    alertmanager-operated                                ClusterIP   None            <none>        9093/TCP,9094/TCP,9094/UDP     26m
+monitoring    monitoring-grafana                                   ClusterIP   10.96.182.211   <none>        80/TCP                         27m
+monitoring    monitoring-kube-prometheus-alertmanager              ClusterIP   10.96.23.70     <none>        9093/TCP                       27m
+monitoring    monitoring-kube-prometheus-operator                  ClusterIP   10.96.252.185   <none>        443/TCP                        27m
+monitoring    monitoring-kube-prometheus-prometheus                ClusterIP   10.96.105.190   <none>        9090/TCP                       27m
+monitoring    monitoring-kube-state-metrics                        ClusterIP   10.96.209.43    <none>        8080/TCP                       27m
+monitoring    monitoring-prometheus-node-exporter                  ClusterIP   10.96.207.141   <none>        9100/TCP                       27m
+monitoring    prometheus-operated                                  ClusterIP   None            <none>        9090/TCP                       26m
+speedtest     speedtest-speedtest-exporter                         ClusterIP   10.96.130.248   <none>        9798/TCP                       24m
+
 $ kubectl get secret --namespace monitoring monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 prom-operator
 $ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
@@ -93,37 +118,7 @@ When deploying a Helm application Argo CD is using Helm only as a template mecha
 | `./homelab-carbon help` | Print help text. |
 
 
-### Check delivery cluster
-```
-$ kubectl config use-context kind-delivery
-Switched to context "kind-delivery".
-$ kubectl get po --all-namespaces
-NAMESPACE            NAME                                                     READY   STATUS      RESTARTS   AGE
-descheduler          descheduler-28162094-7cr6x                               0/1     Completed   0          4m23s
-descheduler          descheduler-28162096-js876                               0/1     Completed   0          2m25s
-descheduler          descheduler-28162098-tlhzj                               0/1     Completed   0          25s
-element              element-elementweb-76dbfbfb7-2vjr8                       1/1     Running     0          5m59s
-excalidraw           excalidraw-75dd4b8d99-chg5t                              1/1     Running     0          6m1s
-kube-system          coredns-565d847f94-2mwq4                                 1/1     Running     0          8m22s
-kube-system          coredns-565d847f94-7krvj                                 1/1     Running     0          8m22s
-kube-system          etcd-delivery-control-plane                              1/1     Running     0          8m40s
-kube-system          kindnet-2lkjq                                            1/1     Running     0          8m23s
-kube-system          kube-apiserver-delivery-control-plane                    1/1     Running     0          8m40s
-kube-system          kube-controller-manager-delivery-control-plane           1/1     Running     0          8m45s
-kube-system          kube-proxy-4gk4l                                         1/1     Running     0          8m23s
-kube-system          kube-scheduler-delivery-control-plane                    1/1     Running     0          8m47s
-local-path-storage   local-path-provisioner-684f458cdd-c8zdc                  1/1     Running     0          8m22s
-loki                 loki-0                                                   1/1     Running     0          3m28s
-loki                 loki-promtail-zjjjq                                      1/1     Running     0          3m28s
-monitoring           alertmanager-monitoring-kube-prometheus-alertmanager-0   2/2     Running     0          4m57s
-monitoring           monitoring-grafana-6ff5b796c8-bm965                      3/3     Running     0          5m48s
-monitoring           monitoring-kube-prometheus-operator-6bdcf78689-zsqp4     1/1     Running     0          5m48s
-monitoring           monitoring-kube-state-metrics-796557b7d8-5sksd           1/1     Running     0          5m48s
-monitoring           monitoring-prometheus-node-exporter-7rzxq                1/1     Running     0          5m48s
-monitoring           prometheus-monitoring-kube-prometheus-prometheus-0       2/2     Running     0          4m55s
-speedtest            speedtest-speedtest-exporter-6d95b8b476-p75wn            1/1     Running     0          3m17s
 
-```
 
 
 
