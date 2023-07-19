@@ -37,13 +37,7 @@ You can set it manually IP in the `delivery/cluster.yaml` file.
 
 ### Repository access
 
-ArgoCD needs access to the repo. GitOps works by pulling the manifests from a git repository, and applying them to the cluster. If you're happy with the manifests in this repo, you can leave them as-is. If you want to make changes, you'll need to fork the repo, and edit the manifests to point to your fork (use `https`, not `ssh`):
-
-| File | Field |
-| --- | --- |
-| management/manifests/application.yaml | `repoURL` |
-| management/manifests/repository.yaml | `url` |
-| delivery/manifests/shared.yaml | `repoURL` |
+ArgoCD needs access to the repo. GitOps works by pulling the manifests from a git repository, and applying them to the cluster. 
 
 ### Accessing the UIs
 
