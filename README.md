@@ -11,7 +11,7 @@
 
 ## Introduction
 
-Carbon-homelab is a sandbox for deploying [Prometheus](https://prometheus.io), [Grafana](https://grafana.com) [Loki](Grafana-UI.png), etc. apps to K8s with [ArgoCD](https://argoproj.github.io/cd/).
+Carbon-homelab is a sandbox for deploying [Prometheus](https://prometheus.io), [Grafana](https://grafana.com), [Loki](https://grafana.com/oss/loki/), etc. apps to K8s with [ArgoCD](https://argoproj.github.io/cd/).
 
 ## Prerequisites
 
