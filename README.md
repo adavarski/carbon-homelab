@@ -74,3 +74,36 @@ When deploying a Helm application Argo CD is using Helm only as a template mecha
 | `./homelab-carbon init` | Create clusters and deploy apps. |
 | `./homelab-carbon kill` | Tear down clusters. |
 | `./homelab-carbon help` | Print help text. |
+
+
+### Check delivery cluster
+```
+$ kubectl config use-context kind-delivery
+Switched to context "kind-delivery".
+$ kubectl get po --all-namespaces
+NAMESPACE            NAME                                                     READY   STATUS      RESTARTS   AGE
+descheduler          descheduler-28162094-7cr6x                               0/1     Completed   0          4m23s
+descheduler          descheduler-28162096-js876                               0/1     Completed   0          2m25s
+descheduler          descheduler-28162098-tlhzj                               0/1     Completed   0          25s
+element              element-elementweb-76dbfbfb7-2vjr8                       1/1     Running     0          5m59s
+excalidraw           excalidraw-75dd4b8d99-chg5t                              1/1     Running     0          6m1s
+kube-system          coredns-565d847f94-2mwq4                                 1/1     Running     0          8m22s
+kube-system          coredns-565d847f94-7krvj                                 1/1     Running     0          8m22s
+kube-system          etcd-delivery-control-plane                              1/1     Running     0          8m40s
+kube-system          kindnet-2lkjq                                            1/1     Running     0          8m23s
+kube-system          kube-apiserver-delivery-control-plane                    1/1     Running     0          8m40s
+kube-system          kube-controller-manager-delivery-control-plane           1/1     Running     0          8m45s
+kube-system          kube-proxy-4gk4l                                         1/1     Running     0          8m23s
+kube-system          kube-scheduler-delivery-control-plane                    1/1     Running     0          8m47s
+local-path-storage   local-path-provisioner-684f458cdd-c8zdc                  1/1     Running     0          8m22s
+loki                 loki-0                                                   1/1     Running     0          3m28s
+loki                 loki-promtail-zjjjq                                      1/1     Running     0          3m28s
+monitoring           alertmanager-monitoring-kube-prometheus-alertmanager-0   2/2     Running     0          4m57s
+monitoring           monitoring-grafana-6ff5b796c8-bm965                      3/3     Running     0          5m48s
+monitoring           monitoring-kube-prometheus-operator-6bdcf78689-zsqp4     1/1     Running     0          5m48s
+monitoring           monitoring-kube-state-metrics-796557b7d8-5sksd           1/1     Running     0          5m48s
+monitoring           monitoring-prometheus-node-exporter-7rzxq                1/1     Running     0          5m48s
+monitoring           prometheus-monitoring-kube-prometheus-prometheus-0       2/2     Running     0          4m55s
+speedtest            speedtest-speedtest-exporter-6d95b8b476-p75wn            1/1     Running     0          3m17s
+
+```
