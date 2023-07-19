@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: shared
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            argocd.argoproj.io/secret-type: cluster
+  template:
+    metadata:
+      name: "{{name}}-shared"
+    spec:
+      project: delivery
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: false
+        syncOptions:
+          - Replace=true
+      destination:
+        server: "{{server}}"
+        namespace: default
+      source:
+        path: delivery/shared
+        repoURL: https://github.com/adavarski/homelab-carbon
+        targetRevision: main
+        directory:
+          recurse: true

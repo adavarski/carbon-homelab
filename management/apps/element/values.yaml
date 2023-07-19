@@ -1,0 +1,13 @@
+elementweb:
+  ingress:
+    enabled: true
+    className: nginx
+    hosts:
+      - host: chat.192.168.1.99.nip.io
+        paths:
+          - path: /
+            pathType: Prefix
+  config:
+    default:
+      base_url: http://chat.192.168.1.99.nip.io
+      server_name: chat.192.168.1.99.nip.io

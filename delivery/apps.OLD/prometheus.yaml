@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: prometheus
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            argocd.argoproj.io/secret-type: cluster
+  template:
+    metadata:
+      name: "{{name}}-prometheus"
+    spec:
+      project: delivery
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: false
+      destination:
+        server: "{{server}}"
+        namespace: default
+      source:
+        chart: kube-prometheus
+        repoURL: https://charts.bitnami.com/bitnami
+        targetRevision: 8.3.1
+        helm:
+          version: v3
+          skipCrds: true
+          values: |
+            prometheus:
+              thanos:
+                create: true

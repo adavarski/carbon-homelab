@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: excalidraw
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: draw.192.168.1.99.nip.io
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            backend:
+              service:
+                name: excalidraw
+                port:
+                  name: http

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# check if command exists in ./scripts folder
+if [ -f "scripts/$1.sh" ]; then
+  source scripts/$1.sh
+else
+  echo ""
+  source scripts/help.sh
+fi

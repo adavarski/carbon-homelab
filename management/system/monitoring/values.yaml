@@ -1,0 +1,33 @@
+kube-prometheus-stack:
+  grafana:
+    adminPassword: null
+    defaultDashboardsEnabled: true
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - grafana.192.168.1.99.nip.io
+    persistence:
+      enabled: false
+    additionalDataSources:
+      - name: Loki
+        type: loki
+        url: http://loki.loki:3100
+    grafana.ini:
+      server:
+        root_url: http://grafana.192.168.1.99.nip.io
+      auth.anonymous:
+        enabled: true
+
+  prometheus:
+    prometheusSpec:
+      ruleSelectorNilUsesHelmValues: false
+      serviceMonitorSelectorNilUsesHelmValues: false
+      podMonitorSelectorNilUsesHelmValues: false
+      probeSelectorNilUsesHelmValues: false
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - prometheus.192.168.1.99.nip.io
+

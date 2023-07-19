@@ -1,0 +1,66 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: thanos
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            argocd.argoproj.io/secret-type: cluster
+  template:
+    metadata:
+      name: "{{name}}-thanos"
+    spec:
+      project: delivery
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: false
+      destination:
+        server: "{{server}}"
+        namespace: default
+      source:
+        chart: thanos
+        repoURL: https://charts.bitnami.com/bitnami
+        targetRevision: 11.6.6
+        helm:
+          version: v3
+          values: |
+            objstoreConfig: |-
+              type: FILESYSTEM
+              config:
+                directory: "/minio"
+            query:
+              dnsDiscovery:
+                sidecarsService: delivery-prometheus-kube-p-prometheus-thanos
+                sidecarsNamespace: default
+            bucketweb:
+              enabled: true
+            compactor:
+              enabled: true
+            storegateway:
+              enabled: true
+            ruler:
+              enabled: true
+              alertmanagers:
+                - http://delivery-prometheus-kube-p-alertmanager.default.svc.cluster.local:9093
+              config: |-
+                groups:
+                  - name: "metamonitoring"
+                    rules:
+                      - alert: "PrometheusDown"
+                        expr: absent(up{prometheus="default/delivery-prometheus-kube-p-prometheus"})
+            metrics:
+              enabled: true
+              serviceMonitor:
+                enabled: true
+            minio:
+              enabled: true
+              auth:
+                rootUser: "admin"
+                rootPassword: "minio123"
+              defaultBuckets: "thanos"

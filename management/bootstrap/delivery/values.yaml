@@ -1,0 +1,8 @@
+gitops:
+  repo: https://github.com/adavarski/carbon-homelab
+  revision: main
+stacks:
+  - name: bootstrap
+    namespace: argocd
+  - name: system
+  - name: apps
