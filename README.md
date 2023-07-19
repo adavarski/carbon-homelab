@@ -66,7 +66,6 @@ List of values to pass into `kubectl port-forward`:
 | argocd-server | argocd | `8080:443` |
 | grafana | monitoring | `3000:3000` |
 | prometheus | monitoring | `9090:9090` |
-| thanos-query | monitoring | `9090:9090` |
 
 ### Custom resources
 
