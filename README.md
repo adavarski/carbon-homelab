@@ -27,7 +27,7 @@ Titan is a sandbox for deploying [Prometheus](https://prometheus.io), [Thanos](h
 2. Open a terminal on the cloned directory and run `./homelab-carbon init`.
 3. When you're done, run `./homelab-carbon kill` to tear down the clusters.
 
-`carbon-homelab` will create local Kind clusters for management and delivery, and deploy ArgoCD to the management cluster. It will also deploy Prometheus, Thanos, and Grafana to the delivery cluster.
+`carbon-homelab` will create local Kind clusters for management and delivery, and deploy ArgoCD to the management cluster. It will also deploy Prometheus, Grafana, Loki to the delivery cluster.
 
 ### Delivery cluster
 
