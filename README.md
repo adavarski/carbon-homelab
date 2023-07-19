@@ -94,7 +94,8 @@ prom-operator
 $ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 
 $ kubectl config use-context kind-managemant
-$ kubectl port-forward svc/argocd-server -n argocd 8080:80 (carbon-homelab outputs argocd admin password)
+$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+$ kubectl port-forward svc/argocd-server -n argocd 8080:80 (Note: carbon-homelab outputs argocd admin password)
 
 ```
 
