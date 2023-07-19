@@ -58,7 +58,7 @@ List of values to pass into `kubectl port-forward`:
 | Service | Namespace | Ports |
 | --- | --- | --- |
 | argocd-server | argocd | `8080:443` |
-| grafana | monitoring | `3000:3000` |
+| grafana | monitoring | `3000:80`    |
 | prometheus | monitoring | `9090:9090` |
 
 ### Custom resources
@@ -111,7 +111,19 @@ prom-operator
 $ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 
 ```
-Screenshots:
+### Screenshots:
+
+<img src="screenshots/ArgoCD-UI-Clusters.png?raw=true" width="1000">
+
+<img src="screenshots/ArgoCD-UI-Apps.png?raw=true" width="1000">
+
+<img src="screenshots/Grafana-UI.png?raw=true" width="1000">
+
+
+
+
+
+
 
 
 
