@@ -6,7 +6,7 @@
 >   * [Delivery cluster](#delivery-cluster)
 >   * [Repository access](#repository-access)
 >   * [Accessing the UIs](#accessing-the-uis)
->   * [Custom resources(CRDs)](#custom-resources)
+>   * [Custom resources (CRDs)](#custom-resources)
 > * [Using the CLI](#using-the-cli)
 
 ## Introduction
