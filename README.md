@@ -94,7 +94,7 @@ prom-operator
 $ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 ```
 
-* Screenshots:
+### Screenshots:
 
 <img src="screenshots/ArgoCD-UI-Clusters.png?raw=true" width="1000">
 
