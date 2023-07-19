@@ -106,4 +106,12 @@ monitoring           monitoring-prometheus-node-exporter-7rzxq                1/
 monitoring           prometheus-monitoring-kube-prometheus-prometheus-0       2/2     Running     0          4m55s
 speedtest            speedtest-speedtest-exporter-6d95b8b476-p75wn            1/1     Running     0          3m17s
 
+$ kubectl get secret --namespace monitoring monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+prom-operator
+$ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
+
 ```
+Screenshots:
+
+
+
