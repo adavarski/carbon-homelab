@@ -1,7 +1,3 @@
-<h1 align="center">
-  <img src="homelab-carbon.png" width="208" alt=""><br>
-  homelab-carbon<br>
-</h1>
 
 > **Table of Contents**
 > * [Introduction](#introduction)
