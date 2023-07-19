@@ -114,6 +114,9 @@ When deploying a Helm application Argo CD is using Helm only as a template mecha
 
 Ref: https://argo-cd.readthedocs.io/en/stable/user-guide/helm/ && https://argo-cd.readthedocs.io/en/stable/faq/#after-deploying-my-helm-application-with-argo-cd-i-cannot-see-it-with-helm-ls-and-other-helm-commands
 
+Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Template/
+
+
 ## Using the CLI
 
 `carbon-homelab` provides a cli to help you raise and lower the stack. It's a simple wrapper around `kind`, `kubectl`, and `helm`, so you can use those tools directly if you prefer.
