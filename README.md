@@ -102,11 +102,11 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:80 (Note: carbon-homelab
 
 ### Screenshots:
 
-<img src="screenshots/ArgoCD-UI-Clusters.png?raw=true" width="1000">
+<img src="screenshots/ArgoCD-UI-Clusters.png?raw=true" width="1200">
 
-<img src="screenshots/ArgoCD-UI-Apps.png?raw=true" width="1000">
+<img src="screenshots/ArgoCD-UI-Apps.png?raw=true" width="1200">
 
-<img src="screenshots/Grafana-UI.png?raw=true" width="1000">
+<img src="screenshots/Grafana-UI.png?raw=true" width="1200">
 
 
 ### Custom resources (CRDs)
