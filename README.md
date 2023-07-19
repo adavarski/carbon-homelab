@@ -103,7 +103,7 @@ $ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 <img src="screenshots/Grafana-UI.png?raw=true" width="1000">
 
 
-### Custom resources (CRDs)
+## Custom resources (CRDs)
 
 When deploying a Helm application Argo CD is using Helm only as a template mechanism. It runs helm template and then deploys the resulting manifests on the cluster instead of doing helm install. This means that you cannot use any Helm command to view/verify the application. It is fully managed by Argo CD. Note that Argo CD supports natively some capabilities that you might miss in Helm (such as the history and rollback commands).
 
