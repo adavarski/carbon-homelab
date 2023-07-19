@@ -57,11 +57,11 @@ List of values to pass into `kubectl port-forward`:
 
 | Service | Namespace | Ports |
 | --- | --- | --- |
-| argocd-server | argocd | `8080:443` |
+| argocd-server | argocd | `8080:80` |
 | grafana | monitoring | `3000:80`    |
 | prometheus | monitoring | `9090:9090` |
 
-Example (Grafana): 
+Example (Grafana & ArgoCD UI): 
 ```
 $ kubectl config use-context kind-delivery
 $ kubectl get svc --all-namespaces
@@ -92,6 +92,10 @@ speedtest     speedtest-speedtest-exporter                         ClusterIP   1
 $ kubectl get secret --namespace monitoring monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 prom-operator
 $ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
+
+$ kubectl config use-context kind-managemant
+$ kubectl port-forward svc/argocd-server -n argocd 8080:80 (carbon-homelab outputs argocd admin password)
+
 ```
 
 ### Screenshots:
