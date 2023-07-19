@@ -69,13 +69,7 @@ List of values to pass into `kubectl port-forward`:
 
 ### Custom resources
 
-Helm doesn't support upgrading CRDs in the default `/crds` directory, so homelab-carbon uses [braid](https://github.com/cristibalan/braid) to manage the CRDs for ArgoCD and Prometheus externally. To update the CRDs, run the following:
-
-```bash
-$ braid update # and commit the changes
-$ kubectl config use-context kind-{management|delivery}
-$ kubectl apply -f {management|delivery}/shared/crds
-```
+When deploying a Helm application Argo CD is using Helm only as a template mechanism. It runs helm template and then deploys the resulting manifests on the cluster instead of doing helm install. This means that you cannot use any Helm command to view/verify the application. It is fully managed by Argo CD. Note that Argo CD supports natively some capabilities that you might miss in Helm (such as the history and rollback commands).
 
 ## Using the CLI
 
