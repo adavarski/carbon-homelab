@@ -34,7 +34,7 @@ Carbon-homelab is a sandbox for deploying [Prometheus](https://prometheus.io), [
 
 ArgoCD needs access to the delivery cluster, so it can deploy the applications. To do this, homelab-carbon uses a kind [config file](https://kind.sigs.k8s.io/docs/user/configuration/) to create a cluster with an `apiServerAddress` set to the host machine's IP address.
 
-You can set it manually IP in the `delivery/cluster.yaml` file.
+You can set it manually IP in the `delivery/cluster.yaml` file !
 
 ### Repository access
 
